@@ -9,9 +9,28 @@
 <br/>
 <br/>
 
+<details>
+  <summary><b>📂 Bookmarks</b></summary>
+  <blockquote><i>
+    Coming Soon!
+   </i></blockquote>
+</details>
 
 <details>
-  <summary><b>Screenshots</b></summary>
+  <summary><b>📷 Screenshots</b></summary>
+  <blockquote><i>
+    Coming Soon!
+   </i></blockquote>
+</details>
+
+<details>
+  <summary><b>🖥 Programs</b></summary>
+  <blockquote><i>
+    Coming Soon!
+   </i></blockquote>
+</details>
+<details>
+  <summary><b>⌨️ Keybinds</b></summary>
   <blockquote><i>
     Coming Soon!
    </i></blockquote>
