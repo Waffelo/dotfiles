@@ -1,0 +1,185 @@
+#   \ \ /\ / / _` | |_| |_ / _ \ |/ _ \
+#    \ V  V / (_| |  _|  _|  __/ | (_) |
+#     \_/\_/ \__,_|_| |_|  \___|_|\___/
+#
+#  Welcome to my .sxhkd traveler! There is nothing much to see here
+#  but I hope you will like it! If you want to, you can check out my
+#  social media links.
+#
+#
+#   Mastodon | @Waffelo@social.linux.pizza
+#   Youtube  | https://www.youtube.com/c/waffelo
+#   Discord  | Waffelo#0129
+#
+
+
+# -- ///// system ///// -- #
+
+super + l
+	betterlockscreen -l -u /home/waffelo/Pictures/Wallpapers/Waffelo/wallpaper.png --desc Waffelo!
+
+super + space
+	rofi -show drun
+
+super + e
+	alacritty -e ranger
+
+super + period
+	rofi -show emoji -modi emoji
+
+super + z
+	rofi -show power-menu -modi power-menu:rofi-power-menu
+
+super + shift + b
+	rofi-bluetooth
+
+super + shift + n
+	rofi-wifi-menu
+
+super + p
+	alacritty -e pulsemixer
+
+Print
+	spectacle -r -b
+
+ctrl + Print
+	spectacle -f -b
+
+super + shift + d
+	dunstctl history-pop &
+
+# -- /////  applications ///// -- #
+
+super + shift + h
+	alacritty -e htop
+
+super + v
+  alacritty -e vim
+
+super + n
+	alacritty -e newsboat
+
+super + b
+	firefox
+
+super + h
+	firefox https://brick-hill.com/shop
+
+super + t
+	alacritty
+
+super + m
+	alacritty -e cmus
+
+super + c
+	alacritty -e calcurse
+
+super + shift + n
+	nitrogen
+
+super + a
+	keepassxc
+
+# -- ///// bspwm ///// -- #
+
+# quit/restart bspwm
+ctrl + alt + {q,r}
+	bspc {quit,wm -r}
+
+# make sxhkd reload its configuration files:
+ctrl + alt + s
+	pkill -USR1 -x sxhkd
+
+# close and kill application
+super + {_,shift + }q
+		bspc node -{c,k}
+
+
+
+# // Move & Resize
+
+# Move between virtual Desktops
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,window -d} ^{1-9,10}
+
+# expand a window by moving one of its side outward
+ctrl + alt {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+ctrl + shift {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Focus or move the window in given direction
+# alt + shift = move
+# alt + arrows = focus
+alt + {_,shift + }{Left,Down,Up,Right}
+		bspc node -{f,s} {west,south,north,east}
+
+# move a floating window
+super + alt + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Rotate leaves of tree
+super + shift + {comma,period}
+	bspc node @/ -R {90,270}
+
+
+# // Modes
+
+# alternate between the tiled and monocle layout
+super + shift + m
+	bspc desktop -l next
+
+# Make window sticky
+super + shift + i
+	bspc node -g sticky
+
+# Toggle fullscreen
+super + shift + f 
+	bspc node -t {fullscreen,tiled}	
+
+# Toggle floating on and off
+super + shift + o
+	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+
+
+# // Volume bindings
+
+# Warning!
+# The Volume Up has NO maximum level, be careful while changing the volume since it can harm
+# your ears. ( Made my tinnitus go louder :/ )
+
+
+# Volume Up
+XF86AudioRaiseVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ +10% 
+
+# Volume Down
+XF86AudioLowerVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ -10%
+
+# Volume Mute
+XF86AudioMute 
+	pactl set-sink-mute @DEFAULT_SINK@ toggle 
+
+# Microphone Mute
+XF86AudioMicMute 
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle 
+
+
+# // Display Brightness
+
+XF86MonBrightnessDown
+ light -U 5
+
+XF86MonBrightnessUp
+ light -A 5
+
+# 
+#   ____    |\/|         Hello,
+#   \  /\   / ..__.      You have been blessed by the
+#    \/  \__\   _/       wise fox of the config files.
+#     \__   __  \_       You will be lucky for next 7
+#       \____\___\       days! ^w^

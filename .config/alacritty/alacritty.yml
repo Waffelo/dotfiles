@@ -1,0 +1,71 @@
+env:
+    TERM: xterm-256color
+    WINIT_X11_SCALE_FACTOR: "1"
+
+window:
+  padding:
+    x: 6
+    y: 6
+
+dynamic_padding: true
+
+scrolling:
+  history: 10000
+
+
+font:
+  size: 9
+  normal:
+    family: Cherry 
+    style: regular
+
+  bold:
+    family: Cherry 
+    style: Bold
+
+  italic:
+    family: Cherry 
+    style: Italic
+
+  offset:
+     x: 0
+     y: 1
+
+colors:
+  # Default colors
+  primary:
+    background: '0x1f1d24'
+    foreground: '0xafacbb'
+
+  # Normal colors
+  normal:
+    black:   '0x1f1d24'
+    red:     '0xa03e3e'
+    green:   '0x878e42'
+    yellow:  '0xbb7749'
+    blue:    '0x5c7c96'
+    magenta: '0x8b7393'
+    cyan:    '0x388177'
+    white:   '0x3b3843'
+
+  # Bright colors
+  bright:
+    black:   '0x262230'
+    red:     '0xb64a4a'
+    green:   '0x929852'
+    yellow:  '0xb59555'
+    blue:    '0x6688a4'
+    magenta: '0x94779d'
+    cyan:    '0x59948c'
+    white:   '0x6a6478'
+
+url:
+  launcher:
+    program: xdg-open
+    args: []
+
+key_keybings:
+  - { key: V,        mods: Control|Shift,  action: Paste            }
+  - { key: C,        mods: Control|Shift,  action: Copy             }
+  - { key: Plus,     mods: Control,        action: IncreaseFontSize }
+  - { key: Minus,    mods: Control,        action: DecreaseFontSize }
