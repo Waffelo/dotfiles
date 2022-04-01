@@ -18,9 +18,9 @@
 
 <details>
   <summary><b>📷 Screenshots</b></summary>
-  <blockquote><i>
-    Coming Soon!
-   </i></blockquote>
+  <blockquote>
+    <img src="https://raw.githubusercontent.com/Waffelo/dotfiles/main/assets/screenshot1.png">
+  </blockquote>
 </details>
 
 <details>
