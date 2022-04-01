@@ -1,0 +1,10 @@
+[$Version]
+update_info=spectacle_clipboard.upd:clipboard-settings-change,spectacle_rememberregion.upd:spectacle-migrate-rememberregion
+
+[GuiConfig]
+window-position=50,50
+
+[Save]
+defaultSaveLocation=file:///home/waffelo/Pictures/screenshots
+lastSaveLocation=file:///home/waffelo/Pictures/screenshots/01-04-2022/18h-04m-27s.png
+saveFilenameFormat=%D-%M-%Y/%Hh-%mm-%Ss
