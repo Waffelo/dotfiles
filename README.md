@@ -20,6 +20,8 @@
   <summary><b>📷 Screenshots</b></summary>
   <blockquote>
     <img src="https://raw.githubusercontent.com/Waffelo/dotfiles/main/assets/screenshot1.png">
+    <img src="https://raw.githubusercontent.com/Waffelo/dotfiles/main/assets/screenshot2.png">
+
   </blockquote>
 </details>
 
