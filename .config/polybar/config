@@ -1,0 +1,496 @@
+;------------;
+;   Colors   ;=========================================================================================
+;------------;
+
+[colors]
+background = #211d24
+foreground = #afacbb
+primary = #ffb2a
+secondary = #e60053
+
+normal = ${colors.green1}
+alert = ${colors.yellow1}
+critical = ${colors.red1}
+
+; 1=darker, 2=lighter.
+
+red1 = #a03e3e
+red2 = #b64a4a
+
+green1 = #878e42
+green2 = #929852
+
+yellow1 = #bb7749
+yellow2 = #b59555
+
+blue1 = #5c7c96
+blue2 = #6688a4
+
+magenta1 = #8c6a98
+magenta2 = #94779d
+
+cyan1 = #388177
+cyan2 = #59948c
+
+white1 = #3a3043
+white2 = #484452
+
+black1 = #2A2B2E
+black2 = #43454A
+
+;------------;
+;    Bar     ;=========================================================================================
+;------------;
+
+
+[bar/example]
+width = 100%
+height = 25
+radius = 0.0
+fixed-center = true
+
+enable-ipc=true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #173C4E
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+tray-position = right
+tray-detached = false
+
+font-0 = cherry:style=Regular:pixelsize=11;2
+font-1 = FiraCode Nerd Font:size=9;2
+font-3 = Weather Icons:size=12;1
+
+modules-left = bspwm cmus 
+modules-center = date 
+modules-right =  pulseaudio-control wifi  info-trash filesystem cpu memory dunst battery
+
+; Avalible modules:
+; spotify - shows spotify status
+; date - shows date and time
+; speedtest - shows network speed
+; cpu - shows cpu usage
+; memory - shows ram usage
+; battery - shows battery status
+; bspwm - shows virtual desktop buttons
+; taskwarrior - Task viewer for taskwarrior-cli (broken)
+; filesystem - shows disk status
+; cmus - cmus status
+; pulseaudio-control - audio control
+; dunst - Notification control
+; trash-info - shows how many files are in trash
+; system-usb-dev - shows mounted usb drives
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/system-usb-udev]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-usb-udev.sh
+tail = true
+click-left = ~/.config/polybar/scripts/system-usb-udev.sh --mount &
+click-right = ~/.config/polybar/scripts/system-usb-udev.sh --unmount &
+
+[module/openweathermap-fullfeatured]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 3
+
+[module/info-kernel]
+type = custom/script
+exec = uname -r
+interval = 1024
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-prefix = " "
+format-prefix-font = 3
+format-prefix-foreground = ${color.cyan}
+
+[module/info-trash]
+type = custom/script
+exec = ~/.config/polybar/scripts/info-trash.sh
+interval = 5
+click-left = ~/.config/polybar/scripts/info-trash.sh --clean &
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-prefix = "  "
+format-prefix-font = 3
+format-prefix-foreground = ${color.orange}
+
+[module/wifi]
+type = internal/network
+interface = wlp3s0
+unknown-as-up = true
+interval = 3.0
+tail = true
+
+format-connected = "<ramp-signal><label-connected>"
+
+format-connected-foreground = ${color.cyan}
+
+#label-connected = %essid%   %downspeed:1:10%   %upspeed:1:10%
+label-connected = %essid%
+label-connected-background = ${colors.background}
+label-connected-foreground = ${color.foreground}
+
+
+format-disconnected-prefix  = "睊 "
+format-disconnected-prefix-foreground = ${colors.cyan}
+format-disconnected-prefix-background = ${colors.background}
+format-disconnected-foreground = ${colors.foreground}
+format-disconnected-background = ${colors.background}
+
+format-disconnected = NO WIFI
+
+ramp-signal-0 = " "
+ramp-signal-foreground = ${color.cyan}
+ramp-signal-background = ${color.shade}
+ramp-signal-font = 3
+format-padding = 2
+
+;-------------;
+;  Speedtest  ;=========================================================================================
+;-------------;
+
+[module/speedtest]
+type = custom/script
+exec-if = hash speedtest
+exec = "$HOME/.config/polybar/scripts/speedtest.sh"
+interval = 90
+; requires speedtest-cli to be installed
+
+;-------------;
+;    bspwm    ;=========================================================================================
+;-------------;
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-focused-foreground = #205068
+label-focused-background = #120c0c
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-foreground = #949494
+
+label-urgent = %name%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-padding = 1
+label-empty-foreground = #949494
+
+ws-name-0= TERM
+ws-name-1= WWW
+ws-name-2= IM
+ws-name-3= VG
+ws-name-4= MISC
+
+; Separator in between workspaces
+; label-separator = |
+
+;------------;
+;    date    ;=========================================================================================
+;------------;
+
+
+[module/date]
+type = internal/date
+interval = 0.50
+
+date =
+date-alt = ""
+
+time =   %H:%M:%S    %d/%m/%Y
+time-alt =
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+;------------;
+;   memory   ;=========================================================================================
+;------------;
+
+[module/memory]
+type = internal/memory
+
+;; Update the amount of memory in use every three seconds.
+interval = 3
+
+;; Display the amount of memory used using a bar.
+#format = <label> <bar-used>
+
+;; Show the percentage used and the percentage free.
+;;label = %percentage_used%/%percentage_free%
+label =   %gb_used%
+
+;; Bar settings
+#bar-used-indicator        =
+#bar-used-width            = 15
+#bar-used-foreground-0     = ${colors.foreground}
+#bar-used-foreground-1     = ${colors.foreground}
+#bar-used-foreground-2     = ${colors.foreground}
+#bar-used-foreground-3     = ${colors.foreground}
+#bar-used-fill             = ▐
+#bar-used-empty            = ▐
+#bar-used-empty-foreground = #848484
+
+;-----------;
+;    cpu    ;=========================================================================================
+;-----------;
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = ﬙  %percentage%%
+
+; Spacing between individual per-core ramps
+;ramp-coreload-spacing = 1
+;ramp-coreload-0 = ▁
+;ramp-coreload-1 = ▂
+;ramp-coreload-2 = ▃
+;ramp-coreload-3 = ▄
+;ramp-coreload-4 = ▅
+;ramp-coreload-5 = ▆
+;ramp-coreload-6 = ▇
+;ramp-coreload-7 = █
+;
+;[module/cpu]
+;type = internal/cpu
+;interval = 2
+;format-prefix = "﬙ "
+;format-foreground = #BF616A
+;label = %percentage:2%%
+
+;---------;
+;  dunst  ;=========================================================================================
+;---------;
+
+; https://github.com/JeanEdouardKevin/dunst-polybar
+
+[module/dunst]
+type = custom/ipc
+initial = 1
+format-foreground = #b59555
+
+hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{A}" &
+
+;-----------;
+; pacontrol ;=========================================================================================
+;-----------;
+
+; requires pulseaudio-control and 
+; https://github.com/marioortizmanero/polybar-pulseaudio-control
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 1
+label-foreground = ${colors.foreground}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo:  Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:  Headphones" listen
+click-right = exec alacritty -e pulsemixer &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 100 up
+scroll-down = pulseaudio-control --volume-max 100 down
+
+
+;---------;
+;  cmus   ;=========================================================================================
+;---------;
+
+[module/cmus]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/cmus.sh
+exec-if = pgrep -x cmus
+interval = 1
+
+click-left = cmus-remote --next
+click-right = cmus-remote --prev
+click-middle = cmus-remote --pause
+scroll-up = cmus-remote --volume +5%
+scroll-down = cmus-remote --volume -5%
+
+label-font = 3
+format =   <label>
+format-underline = ${colors.foreground-alt}
+label = %output%
+label-maxlen = 50
+
+;---------;
+; battery ;=========================================================================================
+;---------;
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 95
+
+
+format-charging = <animation-charging> <label-charging>
+format-charging-foreground = ${colors.normal}
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-foreground = ${colors.alert}
+
+format-full-prefix = "  "
+format-full-prefix-foreground = ${colors.normal}
+
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+
+animation-charging-0 =  
+animation-charging-1 =   
+animation-charging-2 = 
+animation-charging-framerate = 750
+
+animation-discharging-0 =  
+animation-discharging-1 = 
+animation-discharging-2 =  
+animation-discharging-framerate = 750
+
+;---------;
+; spotify ;=========================================================================================
+;---------;
+
+[module/spotify]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = ""
+format = <label>
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+
+[module/spotify-prev]
+type = custom/script
+exec = echo "<previous-song-symbol>"
+format = <label>
+click-left = playerctl previous spotify
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo "▶"
+hook-1 = echo "▋▋"
+initial = 1
+click-left = playerctl play-pause spotify
+
+[module/spotify-next]
+type = custom/script
+exec = echo "next-song-symbol"
+format = <label>
+click-left = playerctl next spotify
+
+;---------------;
+;  taskwarrior  ;=========================================================================================
+;---------------;
+
+;BROKEEEEN
+[module/taskwarrior]
+type = custom/script
+exec = ~/.config/polybar/scripts/task_warrior.sh  -r 5
+tail = true
+format = <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label-padding = 1
+label= "%output%"
+click-right = kill -USR2 %pid%
+click-left = kill -USR1 %pid%
+
+;---------------;
+;  filesystem   ;=========================================================================================
+;---------------;
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+spacing = 4
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+
+; Available tags:
+;   <label-unmounted> (default)
+format-unmounted = <label-unmounted>
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted =   %free%
+
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = #55
