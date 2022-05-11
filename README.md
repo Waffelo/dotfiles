@@ -21,6 +21,7 @@
   <blockquote>
     <img src="https://raw.githubusercontent.com/Waffelo/dotfiles/main/assets/screenshot1.png">
     <img src="https://raw.githubusercontent.com/Waffelo/dotfiles/main/assets/screenshot2.png">
+    <img src="https://cdn.discordapp.com/attachments/832720625826791434/973259374451626094/18h-24m-57s.png">
 
   </blockquote>
 </details>
