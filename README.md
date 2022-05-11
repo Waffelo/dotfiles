@@ -64,7 +64,7 @@
   </tr>
 </table> 
   <p>
-    These are the programs that are the base of my system, they are helping me in using the system and
+    These are the programs that are the base of my system, they are helping me in using the <br/> system and
     making some stuff better!
   </p>
   <br/>
