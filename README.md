@@ -126,3 +126,14 @@ Here are some of my programs for displaying media..
    </i></blockquote>
 </details>
 
+<h2>⚙️ Configuration</h2>
+<details>
+  <summary><b>💾 Disk automount</b></summary>
+  <blockquote>
+  For this you will need a program called <b>udiskie</b>, it is a program that helps
+  with removablee media. Add <b>udiskie -a</b> to the bspwmrc or .xinitrc, depends on
+  your system.
+  
+  </blockquote>
+  
+</details>
