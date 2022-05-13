@@ -128,12 +128,19 @@ Here are some of my programs for displaying media..
 
 <h2>⚙️ Configuration</h2>
 <details>
-  <summary><b>💾 Disk automount</b></summary>
+  <summary><b>💾 Disk auto-mount</b></summary>
   <blockquote>
   For this you will need a program called <b>udiskie</b>, it is a program that helps
-  with removablee media. Add <b>udiskie -a</b> to the bspwmrc or .xinitrc, depends on
+  with removablee media. Add <b>"udiskie -a"</b> to the bspwmrc or .xinitrc, depends on
   your system.
   
   </blockquote>
-  
+</details>
+
+<details>
+  <summary><b>🗑️ Trash</b></summary>
+  <blockquote>
+  For trash managment I use <b>Trash-cli</b>, I put it into my .bashrc so it runs instead of
+  typicall rm command. The trashed files are stored in <b>~/.local/share/Trash/files</b>. 
+  </blockquote>
 </details>
