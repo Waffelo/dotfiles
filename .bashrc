@@ -25,9 +25,9 @@ PS1='[\u@\h \W]\$ '
 alias doom-sync='.emacs.d/bin/doom sync'
 
 # // Directories
-alias vimkc='vim .config/kitty/colors.conf'
-alias vimbs='vim .config/bspwm/bspwmrc'
-alias vimsx='vim .config/sxhkd/sxhkdrc'
+alias vimkc='nvim .config/kitty/colors.conf'
+alias vimbs='nvim .config/bspwm/bspwmrc'
+alias vimsx='nvim .config/sxhkd/sxhkdrc'
 
 # // Colors
 alias grep='grep --color=auto'
@@ -40,11 +40,16 @@ alias ls='exa -la'
 alias umount='unmount'
 alias btc='sudo bluetoothctl'
 
+alias vim='nvim'
+
+alias rm='trash'
+
 alias exec-order-66='sudo pacman -Qtdq | sudo pacman -Rns -'
 alias mv='mv -i'
 alias kill-exe='kill $(pgrep exe)' # Kills dumb wine stuff
-alias au='sudo chmod a+rw /dev/ttyACM0' # Gives me permissions for USB port so I can program my Arduino :3
 
+alias au='sudo chmod a+rw /dev/ttyACM0' # Gives me permissions for USB port so I can program my Arduino :3
+alias auu='sudo chmod a+rw /dev/ttyUSB0'
 # // Developer
 
 alias py='python3'
