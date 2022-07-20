@@ -16,7 +16,7 @@
 # -- ///// system ///// -- #
 
 super + l
-	betterlockscreen -l -u /home/waffelo/Pictures/Wallpapers/Waffelo/wallpaper.png --desc Waffelo!
+	betterlockscreen -l --desc Waffelo!
 
 super + space
 	rofi -show drun
@@ -53,17 +53,23 @@ super + shift + d
 super + shift + h
 	alacritty -e htop
 
+super + w
+  firefox https://waffelo.net
+
 super + v
   alacritty -e vim
 
-super + n
-	alacritty -e newsboat
+super + i
+	alacritty -e weechat
 
 super + b
 	firefox
 
 super + h
 	firefox https://brick-hill.com/shop
+
+super + f
+  firefox https://stop.voring.me/
 
 super + t
 	alacritty
