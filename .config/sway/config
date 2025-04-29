@@ -1,0 +1,207 @@
+# --- Appearance ----------------------------------
+client.focused  #401b8c #5E35B1 #eae1fc
+titlebar_padding 4 2
+gaps inner 20
+
+#output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/weird.jpg fill
+output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png fill
+
+bar {
+    position bottom
+    status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
+    workspace_buttons yes
+    output HDMI-A-1
+    separator_symbol |
+    colors {
+    	background #181717
+        focused_workspace #401b8c #5E35B1 #eae1fc
+        inactive_workspace #211142 #442f6e #8d859e
+    }
+}
+
+
+# --- Keyboard layout -----------------------------
+input * {
+    xkb_options "grp:win_space_toggle"
+    xkb_layout sk(qwerty),us
+}
+
+# Screen
+output DP-1 mode 1920x1080@75Hz pos 1080 770
+
+# Wallpaper
+
+
+
+# --- Idling -------------------------------
+exec swayidle -w \
+	timeout 600 'swaylock -f' \
+	timeout 900 'swaymsg "output * power off"' \
+	resume 'swaymsg "output * power on"' &
+
+
+
+
+
+# --- Keybinds -----------------------
+set $browser librewolf
+set $terminal alacritty
+set $launcher wofi --show drun
+set $emoji exec $HOME/.local/bin/bemoji
+
+# Key variables
+set $super Mod4
+set $mod Mod1
+set $left h
+set $down j
+set $up k
+set $right l
+
+
+# ThinkPad volume keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+
+# Sway controls
+bindsym $super+l exec swaylock -k
+bindsym $mod+Shift+r reload
+bindsym $super+q kill
+
+# Screenshoting
+bindsym $super+s exec sh ~/.local/bin/grim-region.sh
+bindsym $super+a exec sh ~/.local/bin/grim-full.sh
+
+# Launching programs
+bindsym $super+return exec $terminal
+bindsym $super+b exec $browser
+bindsym $super+e exec $terminal ranger /home.waffelo/.local/usr/
+bindsym $super+n exec $terminal nvim -c VimwikiIndex
+bindsym $super+v exec thunderbird
+
+# Launch Menus
+bindsym $super+p exec $launcher
+bindsym $super+period exec $emoji
+
+
+# Function keys
+bindsym $super+f1 exec $terminal htop
+
+# Volume
+bindsym $super+f12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $super+f11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $super+f10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Slovak keyboard layout
+bindsym $mod+plus workspace 1
+bindsym $mod+lcaron workspace 2
+bindsym $mod+scaron workspace 3
+bindsym $mod+ccaron workspace 4
+bindsym $mod+tcaron workspace 5
+bindsym $mod+zcaron workspace 6
+bindsym $mod+yacute workspace 7
+bindsym $mod+aacute workspace 8
+bindsym $mod+iacute workspace 9
+bindsym $mod+eacute workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# move but slovak
+bindsym $mod+Shift+plus move container to workspace 1
+bindsym $mod+Shift+lcaron move container to workspace 2
+bindsym $mod+Shift+scaron move container to workspace 3
+bindsym $mod+Shift+ccaron move container to workspace 4
+bindsym $mod+Shift+tcaron move container to workspace 5
+bindsym $mod+Shift+zcaron move container to workspace 6
+bindsym $mod+Shift+yacute move container to workspace 7
+bindsym $mod+Shift+aacute move container to workspace 8
+bindsym $mod+Shift+iacute move container to workspace 9
+bindsym $mod+Shift+eacute move container to workspace 10
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# _move_ the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#Layouts
+bindsym $mod+f fullscreen
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+bindsym $mod+e layout toggle split
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+# --- Autostart ---------------------------------------------
+
+exec dunst &
+exec mullvad connect &
+exec gentoo-pipewire-launcher &
+
