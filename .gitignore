@@ -8,6 +8,9 @@
 !.config/mimeapps.list
 !.config/user-dirs.dirs
 
+!.config/alacritty
+!.config/alacritty/alacritty.toml
+
 !.config/sway/
 !.config/sway/config
 !.config/sway/status.sh
@@ -17,4 +20,5 @@
 !.config/nvim/plugins.vim
 !.config/nvim/keybinds.vim
 !.config/nvim/coc.vim
+!.config/nvim/ascii.txt
 
