@@ -108,8 +108,9 @@ let g:NERDToggleCheckAllLines = 1
 
 " --- Startify --------------------------------------------------
 
+let g:startify_ascii = expand("~/.config/nvim/ascii.txt") " Makes sure this works for all users
 let g:startify_custom_header =
-             \ startify#pad(readfile('/home/waffelo/.config/nvim/ascii.txt'))
+             \ startify#pad(readfile(g:startify_ascii))
 
 function! s:gitModified()
     let files = systemlist('git ls-files -m 2>/dev/null')

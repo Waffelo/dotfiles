@@ -17,3 +17,6 @@ set expandtab
 
 filetype plugin on
 set secure
+
+let g:my_home = $HOME
+
