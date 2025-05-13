@@ -11,6 +11,9 @@
 !.config/alacritty
 !.config/alacritty/alacritty.toml
 
+!.config/ranger
+!.config/ranger/rc.conf
+
 !.config/sway/
 !.config/sway/config
 !.config/sway/status.sh
