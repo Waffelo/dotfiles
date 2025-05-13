@@ -21,6 +21,10 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'scrooloose/nerdtree' " File explorer
 
+    " Tabs
+    Plug 'nvim-tree/nvim-web-devicons' " OPTIONAL: for file icons
+    Plug 'lewis6991/gitsigns.nvim' " OPTIONAL: for git status
+    Plug 'romgrk/barbar.nvim'
 
     " Syntax
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -67,6 +71,9 @@ let maplocalleader = ","
 
 " NerdTree ---------------
 nnoremap <C-e> :NERDTreeToggle<CR>
+
+" kill when last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif 
 
 " Telecope ---------------
 " Find files using Telescope command-line sugar.
