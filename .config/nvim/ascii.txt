@@ -12,4 +12,4 @@
  | \____(      )___) )____
   \______(_______;;;)__;;;)
 
---- Waffelo's Woofy Neovim ---
+~ Waffelo's Woofy Neovim ~
