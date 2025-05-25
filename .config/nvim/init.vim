@@ -10,8 +10,7 @@ colorscheme habamax
 let g:airline_theme='hybrid'
 
 highlight Normal ctermbg=none guibg=none
-highlight BufferTabpageFill ctermbg=black
-highlight BufferInactive ctermbg=black
+highlight BufferTabpageFill ctermbg=NONE
 
 syntax on
 set number

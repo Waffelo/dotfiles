@@ -3,9 +3,14 @@ client.focused  #401b8c #5E35B1 #eae1fc
 titlebar_padding 4 2
 gaps inner 20
 
-#output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/weird.jpg fill
-output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png fill
 
+# Wallpapers ---
+# output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/monowolf.jpg fill
+output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/train_bridge.jpg fill
+#output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png fill
+
+
+# Bar ---
 bar {
     position bottom
     status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
@@ -20,17 +25,15 @@ bar {
 }
 
 
+# Screen ---
+output DP-1 mode 1920x1080@75Hz pos 1080 770
+
+
 # --- Keyboard layout -----------------------------
 input * {
     xkb_options "grp:win_space_toggle"
-    xkb_layout sk(qwerty),us
+    xkb_layout us,sk(qwerty)
 }
-
-# Screen
-output DP-1 mode 1920x1080@75Hz pos 1080 770
-
-# Wallpaper
-
 
 
 # --- Idling -------------------------------
@@ -40,7 +43,10 @@ exec swayidle -w \
 	resume 'swaymsg "output * power on"' &
 
 
-
+# --- Autostart ---------------------------------------------
+exec dunst &
+#exec mullvad connect &
+exec gentoo-pipewire-launcher &
 
 
 # --- Keybinds -----------------------
@@ -57,11 +63,9 @@ set $down j
 set $up k
 set $right l
 
-
 # ThinkPad volume keys
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-
 
 # Sway controls
 bindsym $super+l exec swaylock -k
@@ -75,9 +79,9 @@ bindsym $super+a exec sh ~/.local/bin/grim-full.sh
 # Launching programs
 bindsym $super+return exec $terminal
 bindsym $super+b exec $browser
-bindsym $super+e exec $terminal ranger /home.waffelo/.local/usr/
-bindsym $super+n exec $terminal nvim -c VimwikiIndex
+bindsym $super+n exec $terminal -e nvim 
 bindsym $super+v exec thunderbird
+bindsym $super+e exec $terminal -e ranger ~/.local/usr
 
 # Launch Menus
 bindsym $super+p exec $launcher
@@ -181,16 +185,16 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10 px or 10 ppt
-    bindsym $down resize grow height 10 px or 10 ppt
-    bindsym $up resize shrink height 10 px or 10 ppt
-    bindsym $right resize grow width 10 px or 10 ppt
+    bindsym $left resize shrink width 5 px or 5 ppt
+    bindsym $down resize grow height 5 px or 5 ppt
+    bindsym $up resize shrink height 5 px or 5 ppt
+    bindsym $right resize grow width 5 px or 5 ppt
 
     # ditto, with arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 5 px or 5 ppt
+    bindsym Down resize grow height 5 px or 5 ppt
+    bindsym Up resize shrink height 5 px or 5 ppt
+    bindsym Right resize grow width 5 px or 5 ppt
 
     # return to default mode
     bindsym Return mode "default"
@@ -199,9 +203,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-# --- Autostart ---------------------------------------------
-
-exec dunst &
-exec mullvad connect &
-exec gentoo-pipewire-launcher &
 
