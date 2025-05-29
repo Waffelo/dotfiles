@@ -5,8 +5,8 @@ gaps inner 20
 
 
 # Wallpapers ---
-# output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/monowolf.jpg fill
-output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/train_bridge.jpg fill
+ output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/monowolf.jpg fill
+#output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/train_bridge.jpg fill
 #output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png fill
 
 
