@@ -25,3 +25,5 @@
 !.config/nvim/coc.vim
 !.config/nvim/ascii.txt
 
+!.config/wofi
+!.config/wofi/style.css
