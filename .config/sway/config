@@ -15,7 +15,7 @@ bar {
     position bottom
     status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
     workspace_buttons yes
-    output HDMI-A-1
+    output DP-1
     separator_symbol |
     colors {
     	background #181717
@@ -67,6 +67,16 @@ set $right l
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
+# Media control 
+bindsym $super+KP_2 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $super+KP_1 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym $super+KP_3 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+# Volume
+bindsym $super+f12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $super+f11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $super+f10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
 # Sway controls
 bindsym $super+l exec swaylock -k
 bindsym $mod+Shift+r reload
@@ -90,11 +100,6 @@ bindsym $super+period exec $emoji
 
 # Function keys
 bindsym $super+f1 exec $terminal htop
-
-# Volume
-bindsym $super+f12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $super+f11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $super+f10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # switch to workspace
 bindsym $mod+1 workspace 1
