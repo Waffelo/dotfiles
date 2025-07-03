@@ -1,5 +1,4 @@
 
-
 " NerdTree ---------------
 nnoremap <A-e> :NERDTreeToggle<CR>
 
