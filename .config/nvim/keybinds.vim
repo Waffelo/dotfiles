@@ -18,12 +18,12 @@ hi BufferApageFill ctermbg=black
 noremap <silent>    <C-a> <Cmd>enew<CR>
 
 " Move to previous/next
-nnoremap <silent>    <C-,> <Cmd>BufferPrevious<CR>
-nnoremap <silent>    <C-.> <Cmd>BufferNext<CR>
+nnoremap <silent>    <C-h> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <C-l> <Cmd>BufferNext<CR>
 
 " Re-order to previous/next
-nnoremap <silent>    <C-<> <Cmd>BufferMovePrevious<CR>
-nnoremap <silent>    <C->> <Cmd>BufferMoveNext<CR>
+nnoremap <silent>    <C-j> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <C-k> <Cmd>BufferMoveNext<CR>
 
 " Goto buffer in position...
 nnoremap <silent>    <C-1> <Cmd>BufferGoto 1<CR>
