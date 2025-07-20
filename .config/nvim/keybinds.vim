@@ -1,3 +1,15 @@
+" Base ------------------
+inoremap <C-Enter> <C-o>o
+inoremap <S-Enter> <C-o>O
+
+" move in insert mode
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+" clears selection
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
 " NerdTree ---------------
 nnoremap <A-e> :NERDTreeToggle<CR>
@@ -14,27 +26,27 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " --- BarBar ------------------------------
 hi BufferApageFill ctermbg=black
 
-noremap <silent>    <C-a> <Cmd>enew<CR>
+noremap <silent>    <S-a> <Cmd>enew<CR>
 
 " Move to previous/next
-nnoremap <silent>    <C-h> <Cmd>BufferPrevious<CR>
-nnoremap <silent>    <C-l> <Cmd>BufferNext<CR>
+nnoremap <silent>    <S-h> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <S-l> <Cmd>BufferNext<CR>
 
 " Re-order to previous/next
-nnoremap <silent>    <C-j> <Cmd>BufferMovePrevious<CR>
-nnoremap <silent>    <C-k> <Cmd>BufferMoveNext<CR>
+nnoremap <silent>    <S-j> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <S-k> <Cmd>BufferMoveNext<CR>
 
 " Goto buffer in position...
-nnoremap <silent>    <C-1> <Cmd>BufferGoto 1<CR>
-nnoremap <silent>    <C-2> <Cmd>BufferGoto 2<CR>
-nnoremap <silent>    <C-3> <Cmd>BufferGoto 3<CR>
-nnoremap <silent>    <C-4> <Cmd>BufferGoto 4<CR>
-nnoremap <silent>    <C-5> <Cmd>BufferGoto 5<CR>
-nnoremap <silent>    <C-6> <Cmd>BufferGoto 6<CR>
-nnoremap <silent>    <C-7> <Cmd>BufferGoto 8<CR>
-nnoremap <silent>    <C-8> <Cmd>BufferGoto 8<CR>
-nnoremap <silent>    <C-9> <Cmd>BufferGoto 9<CR>
-nnoremap <silent>    <C-0> <Cmd>BufferLast<CR>
+nnoremap <silent>    <S-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent>    <S-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent>    <S-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent>    <S-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent>    <S-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent>    <S-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent>    <S-7> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <S-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <S-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent>    <S-0> <Cmd>BufferLast<CR>
 
 " Pin/unpin buffer
 nnoremap <silent>    <C-p> <Cmd>BufferPin<CR>
@@ -44,7 +56,7 @@ nnoremap <silent>    <C-p> <Cmd>BufferPin<CR>
 "                          :BufferGotoUnpinned
 
 " Close buffer
-nnoremap <silent>    <C-c> <Cmd>BufferClose<CR>
+nnoremap <silent>    <C-c> <Cmd>BufferClose!<CR>
 " Restore buffer
 nnoremap <silent>    <C-s-c> <Cmd>BufferRestore<CR>
 
