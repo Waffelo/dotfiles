@@ -27,3 +27,7 @@
 
 !.config/wofi
 !.config/wofi/style.css
+
+!.config/PrusaSlicer/
+!.config/PrusaSlicer/**/*
+.config/PrusaSlicer/cache/
