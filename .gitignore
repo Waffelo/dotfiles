@@ -5,6 +5,15 @@
 
 !.config/
 
+!.local/
+!.local/bin
+!.local/bin/bemoji
+!.local/bin/maimpick.sh
+!.local/bin/grim-region.sh
+!.local/bin/grim-full.sh
+!.local/bin/emergency-shutdown.sh
+
+
 !.config/mimeapps.list
 !.config/user-dirs.dirs
 
