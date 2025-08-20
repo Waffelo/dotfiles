@@ -1,6 +1,10 @@
 
 [Default Applications]
+x-scheme-handler/http=librewolf.desktop
+x-scheme-handler/https=librewolf.desktop
+text/html=librewolf.desktop
 x-scheme-handler/obsidian=obsidian.desktop
 image/gif=mpv.desktop;
+image/png=sxiv.desktop;
+image/jpg=sxiv.desktop;
 video/mp4=mpv.desktop;
-x-scheme-handler/discord-1119950313047208006=discord-1119950313047208006.desktop

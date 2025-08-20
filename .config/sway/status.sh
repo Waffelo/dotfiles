@@ -45,6 +45,11 @@ CPU_TEMP=$(
         cpu_temp=$((cpu_temp / 1000))
 
         echo "[🔲 ${cpu_temp}°C]"
+    elif [ -f /sys/class/hwmon/hwmon2/temp1_input ]; then
+        cpu_temp=$(cat /sys/class/hwmon/hwmon2/temp1_input)
+        cpu_temp=$((cpu_temp / 1000))
+        
+        echo "[🔲 ${cpu_temp}°C]"
     fi
 )
 

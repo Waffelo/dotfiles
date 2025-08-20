@@ -46,8 +46,13 @@ exec swayidle -w \
 # --- Autostart ---------------------------------------------
 exec dunst &
 #exec mullvad connect &
-exec gentoo-pipewire-launcher &
+exec pipewire-pulse &
+exec pipewire &
+exec wireplumber &
 
+set $XDG_SESSION_TYPE wayland
+set $XDG_CURRENT_DESKTOP sway
+exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
 
 # --- Keybinds -----------------------
 set $browser librewolf
