@@ -17,6 +17,9 @@
 !.config/mimeapps.list
 !.config/user-dirs.dirs
 
+!.config/dunst/
+!.config/dunst/dunstrc
+
 !.config/alacritty
 !.config/alacritty/alacritty.toml
 

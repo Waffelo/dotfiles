@@ -1,7 +1,15 @@
-mkdir -p $(xdg-user-dir PICTURES)/Screenshots/$(date +%d-%m-%Y)
+date=$(date +%d-%m-%Y)
+time=$(date +%Hh-%Mm-%Ss)
 
-grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshots/$(date +%d-%m-%Y)/$(date +'%Hh-%Mm-%Ss.png') 
-wl-copy < $(xdg-user-dir PICTURES)/Screenshots/$(date +%d-%m-%Y)/$(date +'%Hh-%Mm-%Ss.png')
-dunstify "Regional Screenshot taken"
+work_dir="$(xdg-user-dir Pictures)/Screenshots/$date/"
+taken_pic="$work_dir/$date.png"
 
+
+if [ ! -d "$work_dir" ]; then
+    mkdir -p $work_dir
+fi
+
+grim -g "$(slurp)" $taken_pic
+dunstify --icon=$taken_pic "Dragon photographer" "Regional screenshot has been taken. <i>($time)</i>"
+wl-copy < $taken_pic 
 
