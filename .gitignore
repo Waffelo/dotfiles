@@ -2,12 +2,24 @@
 !.gitignore
 !.bashrc
 !.bash_profile
+!.bash_logout
 
 !.config/
 
+!.config/usr/
+!.config/usr/share/
+!.config/usr/share/wayland-sessions/
+!.config/usr/share/wayland-sessions/sway.desktop
+
+!.config/etc/
+!.config/etc/inittab
+!.config/etc/ly/
+!.config/etc/ly/config.ini
+
 !.local/
 !.local/bin
-!.local/bin/bemoji
+!.local/bin/wofi-bemoji.sh
+!.local/bin/wofi-bluetooth.sh
 !.local/bin/maimpick.sh
 !.local/bin/grim-region.sh
 !.local/bin/grim-full.sh

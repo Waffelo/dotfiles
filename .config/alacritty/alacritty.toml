@@ -4,8 +4,10 @@
     dimensions = { columns = 80, lines = 24 }
     decorations = "full"
     padding = { x=15, y=15}
-    opacity = 0.9
+    opacity = 0.8
 
+[colors.primary]
+    background = "#181717"
 
 [env]
 TERM = "xterm-256color"

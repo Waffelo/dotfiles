@@ -2,12 +2,11 @@
 export TERM=xterm
 export EDITOR=nvim
 
-
 complete -cf doas
-
 
 # --- aliases --------------
 alias vim="nvim"
+alias sudo="doas"
 
 alias la="ls -la"
 alias ll="ls -l"

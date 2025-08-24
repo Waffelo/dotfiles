@@ -24,6 +24,13 @@ for drive in "${Drives[@]}"; do
 done
 )
 
+BLUETOOTH=$(
+    device=$(bluetoothctl info | grep "Name:" | awk '{ print $2 }')
+    if [ -n "$device" ]; then
+        echo -e "[🔗 $device ]"
+    fi
+    )
+
 BATTERY=$(
 if [ -e /sys/class/power_supply/BAT0/capacity ]; then
     bat_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
@@ -62,4 +69,4 @@ TIME="[🕓 $(date "+%H:%M:%S")]"
 
 
 # --- Main
-echo $HDD $LAYOUT $MULLVAD $VOLUME $MEMORY $CPU_TEMP $BATTERY $DATE $TIME
+echo $HDD $LAYOUT $MULLVAD $BLUETOOTH $VOLUME $MEMORY $CPU_TEMP $BATTERY $DATE $TIME

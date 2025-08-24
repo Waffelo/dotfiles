@@ -1,32 +1,40 @@
 # --- Appearance ----------------------------------
-client.focused  #401b8c #5E35B1 #eae1fc
+client.focused  #401b8c #5E35B1 #eae1fc #9a75e5
+client.focused_inactive #333333 #222222 #eae1fc
 titlebar_padding 4 2
 gaps inner 20
 
 
-# Wallpapers ---
-#output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/monowolf.jpg fill
-output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/dragon.jpg fill
-#output * bg /home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png fill
+# --- Wallpapers ----------------------------------
+set $video_wallpaper "/home/waffelo/.local/usr/Videos/Wallpapers/fox_power.mp4"
+set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/dragon.jpg"
 
+# Static and video wallpaper (comment/uncomment here)
+output * bg $wallpaper fill
+#exec mpvpaper DP-1 -o "loop no-audio" $video_wallpaper
 
-# Bar ---
+# --- Bar -----------------------------------------
 bar {
-    position bottom
+    position top
     status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
     workspace_buttons yes
     output DP-1
     separator_symbol |
     colors {
-    	background #181717
+    	background #ffffff00
         focused_workspace #401b8c #5E35B1 #eae1fc
         inactive_workspace #211142 #442f6e #8d859e
     }
 }
 
 
-# Screen ---
+# --- Screen --------------------------------------
+# Main set-up 
 output DP-1 mode 1920x1080@75Hz 
+
+# ThinkPad
+
+# Work
 
 
 # --- Keyboard layout -----------------------------
@@ -36,14 +44,16 @@ input * {
 }
 
 
-# --- Idling -------------------------------
+# --- Idling --------------------------------------
+set $swaylock swaylock -k -i $wallpaper --ring-color=#401b8c --key-hl-color=#180049
+
 exec swayidle -w \
-	timeout 600 'swaylock -f' \
+	timeout 600 '$swaylock' \
 	timeout 900 'swaymsg "output * power off"' \
 	resume 'swaymsg "output * power on"' &
 
 
-# --- Autostart ---------------------------------------------
+# --- Autostart ----------------------------------
 exec dunst &
 #exec mullvad connect &
 exec pipewire-pulse &
@@ -52,13 +62,16 @@ exec wireplumber &
 
 set $XDG_SESSION_TYPE wayland
 set $XDG_CURRENT_DESKTOP sway
-exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+#exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+exec dbus-update-activation-environment --all
 
-# --- Keybinds -----------------------
+# --- Keybinds -----------------------------------
 set $browser librewolf
+set $music spotify
 set $terminal alacritty
 set $launcher wofi --show drun
-set $emoji exec $HOME/.local/bin/bemoji
+set $wofi-emoji exec $HOME/.local/bin/wofi-bemoji.sh
+set $wofi-bt exec $HOME/.local/bin/wofi-bluetooth.sh
 
 # Key variables
 set $super Mod4
@@ -87,8 +100,9 @@ bindsym $super+f11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $super+f10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Sway controls
-bindsym $super+l exec swaylock -k
+bindsym $super+l exec $swaylock
 bindsym $mod+Shift+r reload
+bindsym $mod+Shift+q exit
 bindsym $super+q kill
 
 # Screenshoting
@@ -98,17 +112,20 @@ bindsym $super+a exec sh ~/.local/bin/grim-full.sh
 # Launching programs
 bindsym $super+return exec $terminal
 bindsym $super+b exec $browser
+bindsym $super+m exec $music
 bindsym $super+n exec $terminal -e nvim 
 bindsym $super+v exec thunderbird
 bindsym $super+e exec $terminal -e ranger ~/.local/usr
 
 # Launch Menus
 bindsym $super+p exec $launcher
-bindsym $super+period exec $emoji
+bindsym $super+period exec $wofi-emoji
+bindsym $super+semicolon exec $wofi-bt
 
 
 # Function keys
-bindsym $super+f1 exec $terminal htop
+bindsym $super+F1 exec $terminal -e htop
+bindsym $super+F2 exec $terminal -e pulsemixer
 
 # switch next/prev workspace
 bindsym $super+Right exec swaymsg workspace next

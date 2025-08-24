@@ -8,3 +8,4 @@ image/gif=mpv.desktop;
 image/png=sxiv.desktop;
 image/jpg=sxiv.desktop;
 video/mp4=mpv.desktop;
+x-scheme-handler/bopimo=bopimo-launcher.desktop
