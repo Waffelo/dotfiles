@@ -3,6 +3,7 @@ window {
 margin: 5px;
 border: 2px dashed #401b8c;
 background-color: #252525;
+font-family: Terminus;
 }
 
 #input {
@@ -31,6 +32,10 @@ background-color: #1b1b1b;
 #text {
 margin: 5px;
 color: #828889;
+}
+
+#entry {
+padding: -10px;
 }
 
 #entry:selected {

@@ -6,6 +6,25 @@
     padding = { x=15, y=15}
     opacity = 0.8
 
+[font]
+size = 12.2
+
+[font.normal]
+family = "Terminus"
+style = "Regular"
+
+[font.bold]
+family = "Terminus"
+style = "Bold"
+
+[font.italic]
+family = "Terminus"
+style = "Italic"
+
+[font.bold_italic]
+family = "Terminus"
+style = "Bold Italic"
+
 [colors.primary]
     background = "#181717"
 

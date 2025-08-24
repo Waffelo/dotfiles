@@ -1,6 +1,7 @@
 # --- Appearance ----------------------------------
-client.focused  #401b8c #5E35B1 #eae1fc #9a75e5
+client.focused #401b8c #5E35B1 #eae1fc #9a75e5
 client.focused_inactive #333333 #222222 #eae1fc
+font pango: Terminus 11
 titlebar_padding 4 2
 gaps inner 20
 
@@ -19,7 +20,6 @@ bar {
     status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
     workspace_buttons yes
     output DP-1
-    separator_symbol |
     colors {
     	background #ffffff00
         focused_workspace #401b8c #5E35B1 #eae1fc
