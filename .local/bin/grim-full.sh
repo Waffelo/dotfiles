@@ -1,7 +1,7 @@
 date=$(date +%d-%m-%Y)
 time=$(date +%Hh-%Mm-%Ss)
 
-work_dir="$(xdg-user-dir Pictures)/Screenshots/$date/"
+work_dir="$(xdg-user-dir PICTURES)/Screenshots/$date/"
 taken_pic="$work_dir/$date.png"
 
 

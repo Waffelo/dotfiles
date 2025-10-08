@@ -1,0 +1,18 @@
+program_options:
+  automount: true  # Enable auto-mounting
+  notify: true     # Show notifications
+  tray: false      # Disable tray icon (Sway lacks native tray support; use waybar or similar if needed)
+  udisks_version: 2  # Use udisks2 (default)
+
+mount_options:
+  # Default mount options for all devices
+  - options: [noatime,uid=$UID,gid=$GID]  # Efficient, user-owned mounts
+
+device_configuration:
+  # Example: Custom options for FAT32 USBs
+  - id_type: vfat
+    options: [utf8,flush,uid=$UID,gid=$GID,shortname=mixed]
+
+  # Ignore specific devices (e.g., internal HDD)
+  ignore_device:
+    - id_model: "Internal Drive"  # Replace with your device's model

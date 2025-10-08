@@ -1,8 +1,8 @@
 date=$(date +%d-%m-%Y)
 time=$(date +%Hh-%Mm-%Ss)
 
-work_dir="$(xdg-user-dir Pictures)/Screenshots/$date/"
-taken_pic="$work_dir/$date.png"
+work_dir="$(xdg-user-dir PICTURES)/Screenshots/$date/"
+taken_pic="$work_dir/$time.png"
 
 
 if [ ! -d "$work_dir" ]; then

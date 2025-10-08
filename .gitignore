@@ -32,6 +32,9 @@
 !.config/dunst/
 !.config/dunst/dunstrc
 
+!.config/udiskie/
+!.config/udiskie/config.yml
+
 !.config/alacritty
 !.config/alacritty/alacritty.toml
 

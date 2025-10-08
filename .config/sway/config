@@ -8,18 +8,19 @@ gaps inner 20
 
 # --- Wallpapers ----------------------------------
 set $video_wallpaper "/home/waffelo/.local/usr/Videos/Wallpapers/fox_power.mp4"
-set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/dragon.jpg"
+set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png"
 
 # Static and video wallpaper (comment/uncomment here)
 output * bg $wallpaper fill
 #exec mpvpaper DP-1 -o "loop no-audio" $video_wallpaper
+#exec mpvpaper HDMI-A-1 -o "loop no-audio fullscreen" $video_wallpaper
 
 # --- Bar -----------------------------------------
 bar {
     position top
     status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
     workspace_buttons yes
-    output DP-1
+    output *
     colors {
     	background #ffffff00
         focused_workspace #401b8c #5E35B1 #eae1fc
@@ -30,8 +31,8 @@ bar {
 
 # --- Screen --------------------------------------
 # Main set-up 
-output DP-1 mode 1920x1080@75Hz 
-
+output DP-1 mode 1920x1080@75Hz position 1080 412
+output HDMI-A-1 mode 1920x1080@75Hz position 0 0 transform 270
 # ThinkPad
 
 # Work
@@ -55,6 +56,7 @@ exec swayidle -w \
 
 # --- Autostart ----------------------------------
 exec dunst &
+exec udiskie &
 #exec mullvad connect &
 exec pipewire-pulse &
 exec pipewire &
@@ -104,6 +106,11 @@ bindsym $super+l exec $swaylock
 bindsym $mod+Shift+r reload
 bindsym $mod+Shift+q exit
 bindsym $super+q kill
+
+# Notifications
+bindsym $super+slash exec dunstctl history-pop
+bindsym $super+apostrophe exec dunstctl close
+
 
 # Screenshoting
 bindsym $super+s exec sh ~/.local/bin/grim-region.sh
@@ -221,8 +228,8 @@ mode "resize" {
     # up will shrink the containers height
     # down will grow the containers height
     bindsym $left resize shrink width 5 px or 5 ppt
-    bindsym $down resize grow height 5 px or 5 ppt
-    bindsym $up resize shrink height 5 px or 5 ppt
+    bindsym $down resize shrink height 5 px or 5 ppt
+    bindsym $up resize grow height 5 px or 5 ppt
     bindsym $right resize grow width 5 px or 5 ppt
 
     # ditto, with arrow keys

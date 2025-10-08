@@ -11,6 +11,8 @@ alias sudo="doas"
 alias la="ls -la"
 alias ll="ls -l"
 
+alias upgrade="doas emerge -avuDN @world"
+
 # --- Extract --------------
 
 extract () {
