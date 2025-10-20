@@ -35,6 +35,9 @@
 !.config/udiskie/
 !.config/udiskie/config.yml
 
+!.config/ly/
+!.config/ly/config.ini
+
 !.config/alacritty
 !.config/alacritty/alacritty.toml
 
