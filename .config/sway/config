@@ -85,7 +85,7 @@ set $right l
 
 # Emergency shutodwn
 #bindsym $super+Ctrl exec ~/.local/bin/emergency-shutdown.sh
-bindsym Super_L+Mod1 exec ~/.local/bin/emergency-shutdown.sh
+#bindsym Super_L+Mod1 exec ~/.local/bin/emergency-shutdown.sh
 
 # ThinkPad volume keys
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
