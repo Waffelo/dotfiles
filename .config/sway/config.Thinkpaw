@@ -1,0 +1,22 @@
+
+
+# --- Wallpapers --------------------------
+set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/fractal.jpg"
+set $wallpaper_locked "home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg"
+
+output * bg $wallpaper fill
+
+
+# --- Display ------------------------------
+output eDP-1 mode 1920x1080@60Hz
+
+
+# --- Idling --------------------------------------
+set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
+
+exec swayidle -w \
+	timeout 300 '$swaylock' \
+	timeout 450 'loginctl suspend' \
+    before-sleep '$swaylock' \
+	resume 'swaymsg "output * power on"' &
+

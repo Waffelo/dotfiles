@@ -46,6 +46,8 @@
 
 !.config/sway/
 !.config/sway/config
+!.config/sway/config.Thinkpaw
+!.config/sway/config.DergStation
 !.config/sway/status.sh
 
 !.config/nvim/

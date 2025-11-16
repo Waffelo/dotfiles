@@ -1,20 +1,14 @@
+
+# --- Load Sway profile ---------------------------
+
+include "~/.config/sway/config.$(hostname)"
+
 # --- Appearance ----------------------------------
 client.focused #401b8c #5E35B1 #eae1fc #9a75e5
 client.focused_inactive #333333 #222222 #eae1fc
 font pango: Terminus 11
 titlebar_padding 4 2
 gaps inner 20
-
-
-# --- Wallpapers ----------------------------------
-set $video_wallpaper "/home/waffelo/.local/usr/Videos/Wallpapers/fox_power.mp4"
-set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/fractal.jpg"
-set $wallpaper_locked "home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg"
-
-# Static and video wallpaper (comment/uncomment here)
-output * bg $wallpaper fill
-#exec mpvpaper DP-1 -o "loop no-audio" $video_wallpaper
-#exec mpvpaper HDMI-A-1 -o "loop no-audio fullscreen" $video_wallpaper
 
 # --- Bar -----------------------------------------
 bar {
@@ -29,35 +23,11 @@ bar {
     }
 }
 
-
-# --- Screen --------------------------------------
-# Main set-up 
-#output DP-1 mode 1920x1080@75Hz position 1080 412
-#output HDMI-A-1 mode 1920x1080@75Hz position 0 0 transform 270
-
-# ThinkPad
-output eDP-1 mode 1920x1080@60Hz
-
-
-# Work
-
-
 # --- Keyboard layout -----------------------------
 input * {
     xkb_options "grp:win_space_toggle"
     xkb_layout us,sk(qwerty)
 }
-
-
-# --- Idling --------------------------------------
-set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
-
-exec swayidle -w \
-	timeout 300 '$swaylock' \
-	timeout 450 'loginctl suspend' \
-    before-sleep '$swaylock' \
-	resume 'swaymsg "output * power on"' &
-
 
 # --- Autostart ----------------------------------
 exec dunst &
@@ -69,7 +39,6 @@ exec wireplumber &
 
 set $XDG_SESSION_TYPE wayland
 set $XDG_CURRENT_DESKTOP sway
-#exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
 exec dbus-update-activation-environment --all
 
 # --- Keybinds -----------------------------------
@@ -156,7 +125,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-
 
 # Slovak keyboard layout
 bindsym $mod+plus workspace 1
