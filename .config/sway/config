@@ -8,7 +8,8 @@ gaps inner 20
 
 # --- Wallpapers ----------------------------------
 set $video_wallpaper "/home/waffelo/.local/usr/Videos/Wallpapers/fox_power.mp4"
-set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/fursona/sleep.png"
+set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/fractal.jpg"
+set $wallpaper_locked "home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg"
 
 # Static and video wallpaper (comment/uncomment here)
 output * bg $wallpaper fill
@@ -22,7 +23,7 @@ bar {
     workspace_buttons yes
     output *
     colors {
-    	background #ffffff00
+    	background #00000080
         focused_workspace #401b8c #5E35B1 #eae1fc
         inactive_workspace #211142 #442f6e #8d859e
     }
@@ -31,9 +32,12 @@ bar {
 
 # --- Screen --------------------------------------
 # Main set-up 
-output DP-1 mode 1920x1080@75Hz position 1080 412
-output HDMI-A-1 mode 1920x1080@75Hz position 0 0 transform 270
+#output DP-1 mode 1920x1080@75Hz position 1080 412
+#output HDMI-A-1 mode 1920x1080@75Hz position 0 0 transform 270
+
 # ThinkPad
+output eDP-1 mode 1920x1080@60Hz
+
 
 # Work
 
@@ -46,11 +50,12 @@ input * {
 
 
 # --- Idling --------------------------------------
-set $swaylock swaylock -k -i $wallpaper --ring-color=#401b8c --key-hl-color=#180049
+set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
 
 exec swayidle -w \
-	timeout 600 '$swaylock' \
-	timeout 900 'swaymsg "output * power off"' \
+	timeout 300 '$swaylock' \
+	timeout 450 'loginctl suspend' \
+    before-sleep '$swaylock' \
 	resume 'swaymsg "output * power on"' &
 
 
@@ -133,10 +138,12 @@ bindsym $super+semicolon exec $wofi-bt
 # Function keys
 bindsym $super+F1 exec $terminal -e htop
 bindsym $super+F2 exec $terminal -e pulsemixer
+bindsym $super+F3 exec $terminal -e nmtui
 
 # switch next/prev workspace
 bindsym $super+Right exec swaymsg workspace next
 bindsym $super+Left exec swaymsg workspace prev
+
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -149,6 +156,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+
 
 # Slovak keyboard layout
 bindsym $mod+plus workspace 1

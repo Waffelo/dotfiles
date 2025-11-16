@@ -29,21 +29,40 @@ BLUETOOTH=$(
     if [ -n "$device" ]; then
         echo -e "[🔗 $device ]"
     fi
-    )
+)
 
 BATTERY=$(
-if [ -e /sys/class/power_supply/BAT0/capacity ]; then
-    bat_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
-    bat_status=$(cat /sys/class/power_supply/BAT0/status)
+if [ -f /sys/class/power_supply/BAT0/capacity ]; then
+	
+	Location="/sys/class/power_supply/"
+	Batteries=("BAT0" "BAT1")
+	
+	for battery in "${Batteries[@]}"; do
 
-    if [ "$bat_status" == "Discharging" ]; then
-        echo "[🔋📉 ${bat_capacity}%]"
-    elif [ "$bat_status" == "Charging" ]; then
-        echo "[🔋🔌 ${bat_capacity}%]"
-    else
-        echo "[🔋 ${bat_capacity}%]"
-    fi 
+		bat_status=$(cat ${Location}${battery}/status)
+		bat_capacity=$(cat ${Location}${battery}/capacity)
+		
+
+		if [ "$bat_status" == "Discharging" ]; then
+			echo "[🔋📉 ${battery}: ${bat_capacity}%]"
+		elif [ "$bat_status" == "Charging" ]; then
+        		echo "[🔋🔌 ${battery}: ${bat_capacity}%]"	
+		else
+			echo "[🔋 ${battery}: ${bat_capacity}%]"
+		fi
+	done
 fi
+)
+
+NETWORK=$(
+
+CheckWifi=$(cat /sys/class/net/wlp1s0/operstate)
+
+if [[ "$CheckWifi" == "up" ]]; then
+	SSID=$(nmcli -t -f NAME,DEVICE con show --active | grep wlp1s0 | awk -F: '{print $1}')
+	echo "[🛜 $SSID]"
+fi
+
 )
 
 CPU_TEMP=$(
@@ -65,8 +84,8 @@ LAYOUT="[ ⌨️ $(swaymsg -t get_inputs | grep "active_layout_name" | awk '{pri
 VOLUME="[🔊 $(pulsemixer --get-volume | awk '{print $1}')%]"
 MEMORY="[🐏 $(free -h | head -2 | tail -1 | awk '{print $3}')/$(free -h | head -2 | tail -1 | awk '{print $2}')]"
 DATE="[📅 $(date "+%d/%m/%y")]"
-TIME="[🕓 $(date "+%H:%M:%S")]"
+TIME="[🕓 $(date "+%H:%M")]"
 
 
 # --- Main
-echo $HDD $LAYOUT $MULLVAD $BLUETOOTH $VOLUME $MEMORY $CPU_TEMP $BATTERY $DATE $TIME
+echo $BLUETOOTH $NETWORK $HDD $MULLVAD $MEMORY $CPU_TEMP $BATTERY $VOLUME $LAYOUT $DATE $TIME
