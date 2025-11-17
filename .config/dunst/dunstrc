@@ -8,6 +8,7 @@
     max_icon_size = 100
     word_wrap = yes
     stack_duplicates = true
+    follow = mouse
 
 [urgency_low]
     background = "#181717"

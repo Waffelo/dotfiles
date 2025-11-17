@@ -1,0 +1,18 @@
+[general]
+#Import main base config
+import = [
+    "~/.config/alacritty/alacritty.toml",
+]
+
+[window]
+opacity = 0.6
+
+[font]
+size = 12.2
+
+
+[colors.primary]
+    background = "#000000"
+#    background = "#181717"
+
+

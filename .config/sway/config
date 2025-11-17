@@ -44,7 +44,7 @@ exec dbus-update-activation-environment --all
 # --- Keybinds -----------------------------------
 set $browser librewolf
 set $music spotify
-set $terminal alacritty
+set $terminal alacritty --config-file ~/.config/alacritty/config.$(hostname).toml
 set $launcher wofi --show drun
 set $wofi-emoji exec $HOME/.local/bin/wofi-bemoji.sh
 set $wofi-bt exec $HOME/.local/bin/wofi-bluetooth.sh

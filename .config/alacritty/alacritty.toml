@@ -4,10 +4,6 @@
     dimensions = { columns = 80, lines = 24 }
     decorations = "full"
     padding = { x=15, y=15}
-    opacity = 0.6
-
-[font]
-size = 12.2
 
 [font.normal]
 family = "Terminus"
@@ -24,10 +20,6 @@ style = "Italic"
 [font.bold_italic]
 family = "Terminus"
 style = "Bold Italic"
-
-[colors.primary]
-    background = "#000000"
-#    background = "#181717"
 
 [env]
 TERM = "xterm-256color"

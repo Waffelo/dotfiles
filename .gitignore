@@ -40,6 +40,8 @@
 
 !.config/alacritty
 !.config/alacritty/alacritty.toml
+!.config/alacritty/config.DergStation.toml
+!.config/alacritty/config.Thinkpaw.toml
 
 !.config/ranger
 !.config/ranger/rc.conf
