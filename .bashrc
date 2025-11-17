@@ -11,6 +11,7 @@ alias sudo="doas"
 alias la="ls -la"
 alias ll="ls -l"
 
+alias emerge='elogind-inhibit --what=idle --who="Portage" --why="Something is emerging" --no-pager --no-legend emerge '
 alias upgrade="doas emerge -avuDN @world"
 
 # --- Extract --------------
