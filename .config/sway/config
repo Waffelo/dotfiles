@@ -2,6 +2,7 @@
 # --- Load Sway profile ---------------------------
 
 include "~/.config/sway/config.$(hostname)"
+exec 'git fetch ~/ && git pull ~/' &
 
 # --- Appearance ----------------------------------
 client.focused #401b8c #5E35B1 #eae1fc #9a75e5
@@ -15,7 +16,6 @@ bar {
     position top
     status_command while /home/waffelo/.config/sway/status.sh; do sleep 1; done
     workspace_buttons yes
-    output *
     colors {
     	background #00000080
         focused_workspace #401b8c #5E35B1 #eae1fc
@@ -30,12 +30,14 @@ input * {
 }
 
 # --- Autostart ----------------------------------
+
 exec dunst &
 exec udiskie &
 #exec mullvad connect &
 exec pipewire-pulse &
 exec pipewire &
 exec wireplumber &
+exec syncthing --no-browser &
 
 set $XDG_SESSION_TYPE wayland
 set $XDG_CURRENT_DESKTOP sway

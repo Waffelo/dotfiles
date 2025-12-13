@@ -18,5 +18,5 @@ exec swayidle -w \
 	timeout 300 '$swaylock' \
 	timeout 450 'loginctl suspend' \
     before-sleep '$swaylock' \
-	resume 'swaymsg "output * power on"' &
+	after-resume 'swaymsg "output * power on"' &
 

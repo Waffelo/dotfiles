@@ -7,16 +7,16 @@ output * bg $wallpaper fill
 
 
 # --- Display ------------------------------
-output DP-1 mode 1920x1080@75Hz position 1080 412
+output DP-1 mode 1920x1080@75Hz position 1080 425 
 output HDMI-A-1 mode 1920x1080@75Hz position 0 0 transform 270
 
 
-# --- Idling --------------------------------------
+# --- Idling --------------------------------
 set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
 
 exec swayidle -w \
 	timeout 300 '$swaylock' \
 	timeout 450 'swaymsg "output * power off"' \
     before-sleep '$swaylock' \
-	resume 'swaymsg "output * power on"' &
+	after-resume 'swaymsg "output * power on"' &
 

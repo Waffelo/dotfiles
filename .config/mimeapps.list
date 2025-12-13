@@ -11,3 +11,4 @@ video/mp4=mpv.desktop;
 video/mpv=mkv.desktop;
 x-scheme-handler/bopimo=bopimo-launcher.desktop
 x-scheme-handler/betterdiscord=discord.desktop
+x-scheme-handler/discord-409416265891971072=discord-409416265891971072.desktop
