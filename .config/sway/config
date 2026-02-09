@@ -32,13 +32,8 @@ input * {
 # --- Autostart ----------------------------------
 
 exec dunst &
-exec udiskie &
-#exec mullvad connect &
-exec pipewire-pulse &
-exec pipewire &
-exec wireplumber &
+exec gentoo-pipewire-launcher &
 exec syncthing --no-browser &
-
 set $XDG_SESSION_TYPE wayland
 set $XDG_CURRENT_DESKTOP sway
 exec dbus-update-activation-environment --all

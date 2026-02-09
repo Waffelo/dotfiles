@@ -1,8 +1,8 @@
 
 
 # --- Wallpapers --------------------------
-set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/fractal.jpg"
-set $wallpaper_locked "home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg"
+set $wallpaper "/home/waffelo/.local/usr/Pictures/Wallpapers/earth.png"
+set $wallpaper_locked "home/waffelo/.local/usr/Pictures/Wallpapers/earth.png"
 
 output * bg $wallpaper fill
 
@@ -11,12 +11,15 @@ output * bg $wallpaper fill
 output eDP-1 mode 1920x1080@60Hz
 
 
+
+# --- Autostart ----------------------------------
+
+
 # --- Idling --------------------------------------
-set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
+set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/earth.png
 
 exec swayidle -w \
-	timeout 300 '$swaylock' \
-	timeout 450 'loginctl suspend' \
-    before-sleep '$swaylock' \
-	after-resume 'swaymsg "output * power on"' &
-
+    timeout 4 "doas brightnessctl set 30%-" \
+    timeout 300 "$swaylock" \
+    before-sleep "$swaylock" \
+    after-resume "doas brightnessctl set +30%" &
