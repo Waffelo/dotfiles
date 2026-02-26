@@ -1,14 +1,19 @@
+[Added Associations]
+image/gif=sxiv-2.desktop;
+image/jpeg=sxiv-5.desktop;sxiv-4.desktop;
+image/png=sxiv-3.desktop;
 
 [Default Applications]
-x-scheme-handler/http=librewolf.desktop
-x-scheme-handler/https=librewolf.desktop
-text/html=librewolf.desktop
-x-scheme-handler/obsidian=obsidian.desktop
-image/gif=mpv.desktop;
-image/png=sxiv.desktop;
+image/gif=sxiv-2.desktop;
+image/jpeg=sxiv-5.desktop;
 image/jpg=sxiv.desktop;
+image/png=sxiv-3.desktop;
+text/html=librewolf.desktop
 video/mp4=mpv.desktop;
 video/mpv=mkv.desktop;
-x-scheme-handler/bopimo=bopimo-launcher.desktop
 x-scheme-handler/betterdiscord=discord.desktop
+x-scheme-handler/bopimo=bopimo-launcher.desktop
 x-scheme-handler/discord-409416265891971072=discord-409416265891971072.desktop
+x-scheme-handler/http=librewolf.desktop
+x-scheme-handler/https=librewolf.desktop
+x-scheme-handler/obsidian=obsidian.desktop

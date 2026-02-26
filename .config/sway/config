@@ -7,7 +7,7 @@ exec 'git fetch ~/ && git pull ~/' &
 # --- Appearance ----------------------------------
 client.focused #401b8c #5E35B1 #eae1fc #9a75e5
 client.focused_inactive #333333 #222222 #eae1fc
-font pango: Terminus 11
+font pango: Terminus (TTF) 12
 titlebar_padding 4 2
 gaps inner 20
 
@@ -110,6 +110,8 @@ bindsym $super+semicolon exec $wofi-bt
 bindsym $super+F1 exec $terminal -e htop
 bindsym $super+F2 exec $terminal -e pulsemixer
 bindsym $super+F3 exec $terminal -e nmtui
+bindsym $super+F7 exec swaymsg "output * power on"
+bindsym $super+F8 exec swaymsg "output * power off"
 
 # switch next/prev workspace
 bindsym $super+Right exec swaymsg workspace next

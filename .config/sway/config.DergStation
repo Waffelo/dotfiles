@@ -20,3 +20,5 @@ exec swayidle -w \
     before-sleep '$swaylock' \
 	after-resume 'swaymsg "output * power on"' &
 
+
+
