@@ -12,7 +12,7 @@ output HDMI-A-1 mode 1920x1080@75Hz position 0 0 transform 270
 
 
 # --- Idling --------------------------------
-set $swaylock swaylock -k  --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
+set $swaylock swaylock -k -f --ring-color=#401b8c --key-hl-color=#180049  --image=/home/waffelo/.local/usr/Pictures/Wallpapers/locked.jpg
 
 exec swayidle -w \
 	timeout 300 '$swaylock' \
